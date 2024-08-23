@@ -4,25 +4,16 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Carregar variáveis de ambiente
 MINIO_ENDPOINT = os.getenv('MINIO_ENDPOINT')
 MINIO_ACCESS_KEY = os.getenv('MINIO_ACCESS_KEY')
 MINIO_SECRET_KEY = os.getenv('MINIO_SECRET_KEY')
 
-# Configuração do cliente MinIO
-# minio_client = Minio(
-#     MINIO_ENDPOINT,
-#     access_key=MINIO_ACCESS_KEY,
-#     secret_key=MINIO_SECRET_KEY,
-#     secure=False
-# )
-
 minio_client = Minio(
-    "localhost:9000",  
-    access_key="minioadmin",  
-    secret_key="minioadmin",  
-    secure=False  
-    )
+    MINIO_ENDPOINT,
+    access_key=MINIO_ACCESS_KEY,
+    secret_key=MINIO_SECRET_KEY,
+    secure=False
+)
 
 def create_bucket_if_not_exists(bucket_name):
     if not minio_client.bucket_exists(bucket_name):
