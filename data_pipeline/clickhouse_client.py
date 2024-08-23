@@ -8,7 +8,7 @@ CLICKHOUSE_HOST = os.getenv('CLICKHOUSE_HOST')
 CLICKHOUSE_PORT = os.getenv('CLICKHOUSE_PORT')
 
 def get_client():
-    return clickhouse_connect.get_client(host=CLICKHOUSE_HOST, port=CLICKHOUSE_PORT)
+    return clickhouse_connect.get_client(host=CLICKHOUSE_HOST, port=CLICKHOUSE_PORT, password='ponderadajoao')
 
 def execute_sql_script(script_path):
     client = get_client()
